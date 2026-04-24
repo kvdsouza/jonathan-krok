@@ -4,34 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jonathan & The Kroks — Harvard's Finest 🎤</title>
-  <meta name="description" content="Celebrating Jonathan D'Souza and the Harvard Krokodiloes — music, energy, and Harvard's oldest a cappella group." />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <meta name="description" content="Celebrating Jonathan D'Souza and the Harvard Krokodiloes — Nunc Est Cantandum!" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --crimson: #a51c30;
-      --crimson-light: #d42d3e;
-      --crimson-dark: #7a1425;
-      --gold: #f4c842;
-      --gold-light: #fde68a;
-      --black: #0a0a0a;
-      --dark: #111827;
-      --deep: #1a0a0a;
-      --cream: #fdf8ee;
+      --green: #009B4D;
+      --green-light: #00c853;
+      --green-dark: #006400;
+      --kelly: #008837;
       --white: #ffffff;
+      --cream: #f8f5ee;
+      --ivory: #f5f0e1;
+      --gold: #d4a017;
+      --black: #0a0a0a;
+      --dark: #1a1a1a;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--black);
-      color: var(--cream);
+      background: var(--white);
+      color: #1a1a1a;
       overflow-x: hidden;
     }
 
-    /* ─── NAV ─── */
+    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -40,31 +40,96 @@
       align-items: center;
       justify-content: space-between;
       padding: 1rem 2rem;
-      background: rgba(10,10,10,0.9);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(165,28,48,0.3);
+      border-bottom: 3px solid var(--green);
     }
 
     .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
       font-weight: 900;
-      color: var(--crimson-light);
+      color: var(--green);
       text-decoration: none;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
     }
 
     .nav-links { display: flex; gap: 1.5rem; list-style: none; }
     .nav-links a {
-      color: rgba(253,248,238,0.6);
+      color: #1a1a1a;
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--crimson-light); }
+    .nav-links a:hover { color: var(--green); }
 
-    /* ─── HERO ─── */
+    /* ── PLAY OVERLAY ── */
+    #play-overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: opacity 0.6s;
+    }
+
+    #play-overlay .crocodile { font-size: 5rem; margin-bottom: 1.5rem; animation: crocPulse 2s ease infinite; }
+    @keyframes crocPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+
+    #play-overlay .title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    #play-overlay .sub {
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+    }
+
+    #play-overlay .play-btn {
+      background: var(--white);
+      color: var(--green-dark);
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75rem 2.5rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #play-overlay .play-btn:hover { transform: scale(1.06); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+
+    #play-overlay .motto {
+      margin-top: 2rem;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+    }
+
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -74,32 +139,31 @@
       text-align: center;
       padding: 8rem 1.5rem 5rem;
       background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(165,28,48,0.2) 0%, transparent 70%),
-        linear-gradient(180deg, #0a0a0a 0%, #1a0a0a 100%);
+        linear-gradient(180deg, var(--white) 0%, var(--ivory) 100%);
       position: relative;
+      overflow: hidden;
     }
 
-    .hero-emoji {
-      font-size: 4rem;
-      margin-bottom: 1.5rem;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(0,155,77,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0,136,55,0.05) 0%, transparent 50%);
     }
 
     .hero-badge {
       display: inline-block;
-      background: rgba(165,28,48,0.15);
-      border: 1px solid rgba(165,28,48,0.4);
-      color: var(--crimson-light);
-      font-size: 0.75rem;
+      background: rgba(0,155,77,0.1);
+      border: 2px solid rgba(0,155,77,0.3);
+      color: var(--green-dark);
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 0.4rem 1rem;
+      padding: 0.4rem 1.25rem;
       border-radius: 999px;
       margin-bottom: 1.5rem;
     }
@@ -109,22 +173,28 @@
       font-size: clamp(2.5rem, 7vw, 5.5rem);
       font-weight: 900;
       line-height: 0.95;
-      color: var(--white);
+      color: #1a1a1a;
       margin-bottom: 0.5rem;
     }
 
     .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--crimson-light), var(--gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--green);
     }
 
     .hero-sub {
       font-size: clamp(1rem, 2vw, 1.3rem);
-      color: rgba(253,248,238,0.6);
+      color: #555;
       max-width: 650px;
       line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-motto {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--green-dark);
+      letter-spacing: 0.05em;
       margin-bottom: 2.5rem;
     }
 
@@ -135,37 +205,37 @@
       justify-content: center;
     }
 
-    .hero-stat {
-      text-align: center;
-    }
+    .hero-stat { text-align: center; }
 
     .hero-stat .val {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
       font-weight: 900;
-      color: var(--crimson-light);
+      color: var(--green);
       display: block;
+      line-height: 1;
     }
 
     .hero-stat .lbl {
-      font-size: 0.75rem;
-      color: rgba(253,248,238,0.4);
+      font-size: 0.7rem;
+      color: #888;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       font-weight: 600;
     }
 
-    /* ─── SECTION ─── */
+    /* ── SECTION ── */
     section { padding: 6rem 1.5rem; }
 
     .container { max-width: 1100px; margin: 0 auto; }
 
     .section-label {
+      font-family: 'Cinzel', serif;
       font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--crimson-light);
+      color: var(--green);
       margin-bottom: 0.75rem;
     }
 
@@ -175,29 +245,32 @@
       font-weight: 900;
       line-height: 1.1;
       margin-bottom: 1.25rem;
+      color: #1a1a1a;
     }
 
     .section-sub {
-      color: rgba(253,248,238,0.55);
+      color: #666;
       font-size: 1.05rem;
       max-width: 600px;
       line-height: 1.7;
     }
 
-    /* ─── JONATHAN CARD ─── */
+    /* ── JONATHAN CARD ── */
     .jonathan-section {
-      background:
-        radial-gradient(ellipse 60% 50% at 30% 50%, rgba(165,28,48,0.1) 0%, transparent 70%);
+      background: var(--ivory);
+      border-top: 1px solid rgba(0,155,77,0.1);
+      border-bottom: 1px solid rgba(0,155,77,0.1);
     }
 
     .jonathan-card {
       max-width: 800px;
       margin: 3rem auto 0;
-      background: rgba(165,28,48,0.06);
-      border: 1px solid rgba(165,28,48,0.2);
+      background: var(--white);
+      border: 2px solid rgba(0,155,77,0.15);
       border-radius: 20px;
       padding: 3rem;
       position: relative;
+      box-shadow: 0 4px 30px rgba(0,155,77,0.08);
     }
 
     .jonathan-card::before {
@@ -207,16 +280,15 @@
       top: -1.5rem;
       left: 50%;
       transform: translateX(-50%);
-      filter: drop-shadow(0 4px 12px rgba(165,28,48,0.3));
     }
 
     .jonathan-age {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', serif;
       font-size: 5rem;
       font-weight: 900;
       color: transparent;
-      -webkit-text-stroke: 2px rgba(165,28,48,0.3);
-      background: linear-gradient(135deg, var(--crimson-light), var(--gold));
+      -webkit-text-stroke: 2px rgba(0,155,77,0.3);
+      background: linear-gradient(135deg, var(--green), var(--kelly));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-align: center;
@@ -228,24 +300,24 @@
       font-family: 'Playfair Display', serif;
       font-size: 2.5rem;
       font-weight: 900;
-      color: var(--white);
+      color: #1a1a1a;
       text-align: center;
       margin-bottom: 0.25rem;
     }
 
     .jonathan-title {
       text-align: center;
-      font-size: 1rem;
-      color: var(--crimson-light);
-      font-weight: 600;
-      letter-spacing: 0.05em;
+      font-size: 0.85rem;
+      color: var(--green);
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 2rem;
     }
 
     .jonathan-bio {
       font-size: 1rem;
-      color: rgba(253,248,238,0.7);
+      color: #444;
       line-height: 1.85;
       text-align: center;
     }
@@ -259,20 +331,19 @@
     }
 
     .trait {
-      background: rgba(165,28,48,0.1);
-      border: 1px solid rgba(165,28,48,0.2);
-      color: rgba(253,248,238,0.75);
+      background: rgba(0,155,77,0.08);
+      border: 1px solid rgba(0,155,77,0.2);
+      color: var(--green-dark);
       padding: 0.4rem 1rem;
       border-radius: 999px;
       font-size: 0.85rem;
       font-weight: 600;
     }
 
-    /* ─── KROKS SECTION ─── */
+    /* ── KROKS SECTION ── */
     .kroks-section {
-      background: var(--deep);
-      border-top: 1px solid rgba(165,28,48,0.15);
-      border-bottom: 1px solid rgba(165,28,48,0.15);
+      background: var(--white);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
     .kroks-grid {
@@ -283,16 +354,17 @@
     }
 
     .kroks-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(165,28,48,0.12);
+      background: var(--ivory);
+      border: 1px solid rgba(0,155,77,0.12);
       border-radius: 16px;
       padding: 2rem;
-      transition: border-color 0.3s, transform 0.3s;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
 
     .kroks-card:hover {
-      border-color: rgba(165,28,48,0.4);
+      border-color: rgba(0,155,77,0.4);
       transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,155,77,0.1);
     }
 
     .kroks-card .icon {
@@ -304,18 +376,49 @@
       font-family: 'Playfair Display', serif;
       font-size: 1.3rem;
       font-weight: 700;
-      color: var(--white);
+      color: #1a1a1a;
       margin-bottom: 0.75rem;
     }
 
     .kroks-card p {
       font-size: 0.9rem;
-      color: rgba(253,248,238,0.55);
+      color: #555;
       line-height: 1.65;
     }
 
-    /* ─── FACTS ─── */
-    .facts-section { background: var(--black); }
+    /* ── LOGO BAR ── */
+    .logo-section {
+      background: var(--green);
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+
+    .logo-section .crocodile-art {
+      font-size: 8rem;
+      line-height: 1;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 4px 20px rgba(0,0,0,0.2));
+    }
+
+    .logo-section .logo-text {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .logo-section .logo-sub {
+      color: rgba(255,255,255,0.7);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+
+    /* ── FACTS ── */
+    .facts-section { background: var(--ivory); }
 
     .facts-grid {
       display: grid;
@@ -325,18 +428,18 @@
     }
 
     .fact-card {
-      background: rgba(165,28,48,0.06);
-      border: 1px solid rgba(165,28,48,0.15);
+      background: var(--white);
+      border: 1px solid rgba(0,155,77,0.1);
       border-radius: 12px;
       padding: 1.5rem;
       text-align: center;
     }
 
     .fact-card .fact-num {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', serif;
       font-size: 2.5rem;
       font-weight: 900;
-      color: var(--crimson-light);
+      color: var(--green);
       display: block;
       line-height: 1;
       margin-bottom: 0.5rem;
@@ -344,14 +447,14 @@
 
     .fact-card .fact-label {
       font-size: 0.85rem;
-      color: rgba(253,248,238,0.6);
+      color: #555;
       line-height: 1.4;
     }
 
-    /* ─── SONGS ─── */
+    /* ── SONGS ── */
     .songs-section {
-      background: var(--deep);
-      border-top: 1px solid rgba(255,255,255,0.05);
+      background: var(--white);
+      border-top: 1px solid rgba(0,0,0,0.05);
     }
 
     .songs-list {
@@ -366,20 +469,20 @@
       display: flex;
       align-items: center;
       gap: 1rem;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(165,28,48,0.1);
+      background: var(--ivory);
+      border: 1px solid rgba(0,155,77,0.1);
       border-radius: 12px;
       padding: 1rem 1.5rem;
       transition: border-color 0.2s;
     }
 
-    .song-item:hover { border-color: rgba(165,28,48,0.3); }
+    .song-item:hover { border-color: rgba(0,155,77,0.4); }
 
     .song-num {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', serif;
       font-size: 1.5rem;
       font-weight: 900;
-      color: rgba(165,28,48,0.3);
+      color: rgba(0,155,77,0.3);
       min-width: 2rem;
     }
 
@@ -387,31 +490,32 @@
 
     .song-title {
       font-weight: 700;
-      color: var(--white);
+      color: #1a1a1a;
       font-size: 0.95rem;
     }
 
     .song-artist {
       font-size: 0.8rem;
-      color: rgba(253,248,238,0.4);
+      color: #888;
     }
 
     .song-note {
       font-size: 0.7rem;
-      background: rgba(165,28,48,0.15);
-      color: var(--crimson-light);
+      background: rgba(0,155,77,0.12);
+      color: var(--green-dark);
       padding: 0.2rem 0.6rem;
       border-radius: 999px;
       font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
-    /* ─── CLOSING ─── */
+    /* ── CLOSING ── */
     .closing {
       text-align: center;
       padding: 7rem 1.5rem;
-      background:
-        radial-gradient(ellipse 70% 50% at 50% 100%, rgba(165,28,48,0.15) 0%, transparent 70%);
-      border-top: 1px solid rgba(165,28,48,0.15);
+      background: linear-gradient(180deg, var(--white), var(--green-dark));
+      color: var(--white);
     }
 
     .closing h2 {
@@ -423,7 +527,7 @@
     }
 
     .closing p {
-      color: rgba(253,248,238,0.6);
+      color: rgba(255,255,255,0.7);
       font-size: 1.05rem;
       max-width: 550px;
       margin: 0 auto 2rem;
@@ -436,46 +540,70 @@
       margin-top: 2rem;
     }
 
-    /* ─── FOOTER ─── */
-    footer {
-      padding: 2rem 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      text-align: center;
-      color: rgba(253,248,238,0.3);
-      font-size: 0.8rem;
+    .closing .motto {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: rgba(255,255,255,0.6);
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
     }
 
-    /* ─── RESPONSIVE ─── */
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 1.5rem;
+      border-top: 1px solid rgba(0,155,77,0.15);
+      text-align: center;
+      color: #888;
+      font-size: 0.8rem;
+      background: var(--white);
+    }
+
+    footer .crocodile { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 0.75rem 1rem; }
       .nav-links { display: none; }
       .jonathan-card { padding: 2rem 1.5rem; }
       .hero-stats { gap: 1.5rem; }
+      .logo-section .crocodile-art { font-size: 5rem; }
     }
   </style>
 </head>
 <body>
 
+<!-- PLAY OVERLAY -->
+<div id="play-overlay" onclick="playLochLomond()">
+  <div class="crocodile">🐊</div>
+  <div class="title">Krokodiloes</div>
+  <div class="sub">Harvard's Oldest A Cappella Group • Est. 1946</div>
+  <button class="play-btn" onclick="playLochLomond()">▶ Play Loch Lomond</button>
+  <div class="motto">Nunc Est Cantandum</div>
+</div>
+
+<!-- YOUTUBE PLAYER (hidden) -->
+<div id="yt-player" style="position:fixed;bottom:20px;right:20px;width:0;height:0;overflow:hidden;z-index:9998;"></div>
+
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">THE KROKS</a>
+  <a href="#" class="nav-logo">KROKODILOES</a>
   <ul class="nav-links">
     <li><a href="#jonathan">Jonathan</a></li>
     <li><a href="#kroks">The Kroks</a></li>
-    <li><a href="#facts">Fascinating Facts</a></li>
+    <li><a href="#songs">Songs</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-emoji">🎤</div>
-  <div class="hero-badge">Harvard's Oldest A Cappella Group • Est. 1946</div>
+  <div class="hero-badge">Nunc Est Cantandum — Now is the Time to Sing</div>
   <h1>
     The <span class="highlight">Krokodiloes</span><br/>&amp; Jonathan
   </h1>
   <p class="hero-sub">
     Harvard's premier a cappella group since 1946 — and one of its brightest stars, <strong>Jonathan D'Souza</strong>. Music, brotherhood, and Harvard elite — all in harmony.
   </p>
+  <div class="hero-motto">"A Krokodiloe never goes quietly."</div>
   <div class="hero-stats">
     <div class="hero-stat">
       <span class="val">80+</span>
@@ -506,9 +634,9 @@
     <div class="jonathan-card">
       <div class="jonathan-age">24</div>
       <div class="jonathan-name">Jonathan D'Souza</div>
-      <div class="jonathan-title">🎤 Krokodilo • 🏈 Sports Enthusiast • 🎓 Harvard</div>
+      <div class="jonathan-title">🎤 Krokodilo • 🏈 Harvard Sports Fan • 🎓 Harvard</div>
       <p class="jonathan-bio">
-        Jonathan brings unmatched energy to everything he touches. A standout member of the Harvard Krokodiloes — the oldest a cappella group at Harvard — he combines vocal talen, athletic grit, and an infectious love for sports. Whether it's nailing a harmony, dominating a game, or hyping up the room, Jonathan is the guy you want on your team. At 24, he's just getting started.
+        Jonathan brings unmatched energy to everything he touches. A standout member of the Harvard Krokodiloes — the oldest a cappella group at Harvard — he combines vocal talent, athletic grit, and an infectious love for sports. Whether it's nailing a harmony, dominating a game, or hyping up the room, Jonathan is the guy you want on your team. At 24, he's just getting started.
       </p>
       <div class="jonathan-traits">
         <span class="trait">🎤 Krokodilo</span>
@@ -522,18 +650,18 @@
   </div>
 </section>
 
-<!-- THE KROKS -->
+<!-- KROKS -->
 <section id="kroks" class="kroks-section">
   <div class="container">
     <div class="section-label">The Legend</div>
     <h2 class="section-title">The Harvard Krokodiloes</h2>
-    <p class="section-sub">Founded in 1946 by六个 Harvard undergraduates who wanted to bring barbershop harmonies to campus. Today, they're one of the most famous collegiate a cappella groups in the world.</p>
+    <p class="section-sub">Founded in 1946 by six Harvard undergraduates who wanted to bring barbershop harmonies to campus. Today, they're one of the most famous collegiate a cappella groups in the world.</p>
 
     <div class="kroks-grid">
       <div class="kroks-card">
         <div class="icon">🎤</div>
         <h3>80+ Years Strong</h3>
-        <p>Since 1946, the Kroks have been Harvard's premier all-male a cappella group, touring six continents and performing for global audiences including heads of state.</p>
+        <p>Since 1946, the Kroks have been Harvard's premier all-male a cappella group, touring six continents and performing for heads of state and royalty.</p>
       </div>
       <div class="kroks-card">
         <div class="icon">🌍</div>
@@ -558,14 +686,21 @@
       <div class="kroks-card">
         <div class="icon">🔥</div>
         <h3>Jonathan's Energy</h3>
-        <p>Jonathan brings an irreplaceable spark to the group — his vocal range, sports competitiveness, and natural charisma make him a standout Krok. The group is better with him in it.</p>
+        <p>Jonathan brings an irreplaceable spark to the group — his vocal range, sports competitiveness, and natural charisma make him a standout Krok.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CROCODILE LOGO BAR -->
+<section class="logo-section">
+  <div class="crocodile-art">🐊</div>
+  <div class="logo-text">Krokodiloes</div>
+  <div class="logo-sub">Derived from the ancient Greek word for crocodile — krokodilos</div>
+</section>
+
 <!-- FACTS -->
-<section id="facts" class="facts-section">
+<section class="facts-section">
   <div class="container">
     <div class="section-label">Did You Know?</div>
     <h2 class="section-title">Fascinating Krokodiloe Facts</h2>
@@ -573,12 +708,12 @@
 
     <div class="facts-grid">
       <div class="fact-card">
-        <span class="fact-num">🎙️</span>
+        <span class="fact-num">👑</span>
         <span class="fact-label">The Kroks once performed for Queen Elizabeth II at Buckingham Palace</span>
       </div>
       <div class="fact-card">
         <span class="fact-num">🐊</span>
-        <span class="fact-label">Their name comes from the Nile crocodile — fierce, adaptive, and impossible to ignore</span>
+        <span class="fact-label">Their name comes from the Nile crocodile — fierce, adaptive, impossible to ignore</span>
       </div>
       <div class="fact-card">
         <span class="fact-num">📀</span>
@@ -590,10 +725,10 @@
       </div>
       <div class="fact-card">
         <span class="fact-num">🎬</span>
-        <span class="fact-label">Featured in the movie "The Social Network" — they performed at Harvard in a memorable scene</span>
+        <span class="fact-label">Featured in "The Social Network" — they performed at Harvard in a memorable scene</span>
       </div>
       <div class="fact-card">
-        <span class="fact-num">🏛️</span>
+        <span class="fact-num">🎭</span>
         <span class="fact-label">Notable alumni include Supreme Court Justice Samuel Alito and actor Jack Black</span>
       </div>
       <div class="fact-card">
@@ -609,7 +744,7 @@
 </section>
 
 <!-- SONGS -->
-<section class="songs-section">
+<section id="songs" class="songs-section">
   <div class="container">
     <div class="section-label">The Sound</div>
     <h2 class="section-title">Songs the Kroks (and Jonathan) Nail</h2>
@@ -659,19 +794,60 @@
     Harvard's oldest a cappella group. A 24-year-old who brings the fire every single time.
     Together, they're making music that echoes from Cambridge to the world.
   </p>
-  <p style="font-style: italic; color: rgba(253,248,238,0.4); font-size: 0.9rem; margin-top: 1rem;">
-    "A Krokodiloe never goes quietly." — Harvard tradition
-  </p>
   <div class="closing-vibe">
     🎤 🎷 🎸 🥁
   </div>
+  <div class="motto">Nunc Est Cantandum</div>
 </section>
 
 <!-- FOOTER -->
 <footer>
+  <div class="crocodile">🐊</div>
   <p>🎤 The Harvard Krokodiloes • Est. 1946 • Built with ❤️ for Jonathan D'Souza</p>
-  <p style="margin-top: 0.5rem; font-size: 0.7rem;">Not affiliated with Harvard University or the Krokodiloes — just a fan celebration.</p>
+  <p style="margin-top: 0.5rem; font-size: 0.7rem;">Derived from krokodilos (Greek: crocodile) • Nunc Est Cantandum</p>
 </footer>
 
+<!-- YOUTUBE API -->
+<script>
+  let player;
+  const VIDEO_ID = 'hEN9zoVS8kY'; // Krokodiloes - Loch Lomond (official)
+
+  function playLochLomond() {
+    const overlay = document.getElementById('play-overlay');
+    overlay.style.opacity = '0';
+    setTimeout(() => { overlay.style.display = 'none'; }, 600);
+
+    if (player && typeof player.playVideo === 'function') {
+      player.playVideo();
+    } else {
+      const tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
+  }
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('yt-player', {
+      height: '0',
+      width: '0',
+      videoId: VIDEO_ID,
+      playerVars: {
+        autoplay: 1,
+        controls: 0,
+        disablekb: 1,
+        fs: 0,
+        loop: 0,
+        modestbranding: 1,
+        rel: 0
+      },
+      events: {
+        'onReady': function(event) {
+          event.target.playVideo();
+        }
+      }
+    });
+  }
+</script>
 </body>
 </html>
